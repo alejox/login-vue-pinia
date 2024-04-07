@@ -8,6 +8,7 @@ import {
 import { ref } from "vue";
 import { auth } from "../firebaseConfig";
 import router from "../routes/router";
+import { useDatabaseStore } from "./database";
 
 export const useUserStore = defineStore("userStore", () => {
   const userData = ref(null);
@@ -45,6 +46,11 @@ export const useUserStore = defineStore("userStore", () => {
   };
 
   const logoutUser = async () => {
+    const databaseStore = useDatabaseStore();
+
+    const { $reset } = databaseStore;
+    $reset();
+
     try {
       await signOut(auth);
       userData.value = null;
@@ -63,6 +69,9 @@ export const useUserStore = defineStore("userStore", () => {
             userData.value = { email: user.email, uid: user.uid };
           } else {
             userData.value = null;
+            const databaseStore = useDatabaseStore();
+            const { $reset } = databaseStore;
+            $reset();
           }
           resolve(user);
         },

@@ -8,7 +8,7 @@
       v-model.trim="password"
     />
     <button type="submit" :disabled="loadingUser">Acceso</button>
-    {{ loadingUser }}
+    <!-- {{ loadingUser }} -->
   </form>
 </template>
 

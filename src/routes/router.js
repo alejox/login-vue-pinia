@@ -21,6 +21,12 @@ const routes = [
     beforeEnter: requireAuth,
   },
   {
+    path: "/editar/:id",
+    name: "editar",
+    component: () => import("../views/Editar.vue"),
+    beforeEnter: requireAuth,
+  },
+  {
     path: "/login",
     name: "login",
     component: () => import("../views/Login.vue"),
