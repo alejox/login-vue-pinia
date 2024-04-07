@@ -1,5 +1,5 @@
 <template>
-  <h1>Home</h1>
+  <h1>Home New</h1>
   <p>{{ userData?.email }}</p>
   <form @submit.prevent="handleSubmit">
     <input type="text" placeholder="Ingrese URL" v-model="url" />
